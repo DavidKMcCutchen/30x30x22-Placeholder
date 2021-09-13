@@ -13,9 +13,19 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "noImplicitAny": false,
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
     "paths": {
-      "@currency-converter/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@currency-converter/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@currency-converter/core-data": ["libs/core-data/src/index.ts"],
+      "@currency-converter/core-state": ["libs/core-state/src/index.ts"],
+      "@currency-converter/environment": ["libs/environment/src/index.ts"],
+      "@currency-converter/material": ["libs/material/src/index.ts"],
+      "@currency-converter/theme": ["libs/theme/src/index.ts"],
+      "@currency-converter/ui-login": ["libs/ui-login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

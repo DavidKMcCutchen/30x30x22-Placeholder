@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@currency-converter/api-interfaces';
+
 
 @Component({
   selector: 'currency-converter-root',
@@ -8,6 +7,9 @@ import { Message } from '@currency-converter/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  title= 'Currency Listing';
+  links= [
+    {path: '', icon: 'home', title: 'Home'},
+    {path: 'currencyListings', icon: 'view_list', title: 'Currency Listings'}
+  ]
 }
