@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { CurrencyListing } from '@currency-converter/api-interfaces';
+import { CurrencyListing, CurrencyRates } from '@currency-converter/api-interfaces';
 
 @Component({
   selector: 'currency-converter-currency-details',
@@ -8,14 +8,14 @@ import { CurrencyListing } from '@currency-converter/api-interfaces';
   styleUrls: ['./currency-details.component.scss']
 })
 export class CurrencyDetailsComponent {
-  currentCurrencyListing: CurrencyListing;
+  currentCurrencyListing: CurrencyRates;
   originalTitle: string;
   
 
   @Output() saved = new EventEmitter();
   @Output() cancelled = new EventEmitter();
-  @Input() set currencyListing(value) {
-    if (value) this.originalTitle = value.base;
+  @Input() set currencyRates(value) {
+    if (value) this.originalTitle = value.rate;
     this.currentCurrencyListing = {...value}
   }
 

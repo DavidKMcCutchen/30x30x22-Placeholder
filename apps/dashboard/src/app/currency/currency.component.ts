@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Route, Router, ActivatedRoute } from '@angular/router';
-import { CurrencyListing, emptyCurrencyListing } from '@currency-converter/api-interfaces';
+import { CurrencyListing, CurrencyRate, CurrencyRates, emptyCurrencyListing } from '@currency-converter/api-interfaces';
 import { CurrencyListingFacade } from '@currency-converter/core-state';
 import { Observable } from 'rxjs';
 
@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  allCurrencyListings$: Observable<CurrencyListing[]> = this.currencyListingFacade.allCurrencyListings$;
-  selectedCurrencyListing$: Observable<CurrencyListing> = this.currencyListingFacade.selectedCurrencyListings$;
+  allCurrencyListings$: Observable<CurrencyRate[]> = this.currencyListingFacade.allCurrencyListings$;
+  selectedCurrencyListing$: Observable<CurrencyRate> = this.currencyListingFacade.selectedCurrencyListings$;
 
   form: FormGroup;
 
@@ -22,13 +22,13 @@ export class CurrencyComponent implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
-    this.currencyListingFacade.mutations$.subscribe((_) => this.resetCurrencyListing());
+    // this.currencyListingFacade.mutations$.subscribe((_) => this.resetCurrencyListing());
   }
 
   ngOnInit() {
     this.initForm();
     this.currencyListingFacade.loadCurrencyListings();
-    this.resetCurrencyListing()
+    // this.resetCurrencyListing()
 
     const currencyListingRouteId = this.route.snapshot.params['id'];
 
@@ -43,7 +43,7 @@ export class CurrencyComponent implements OnInit {
 
   loadCurrencyListing(currencyListingId: string) {
     this.currencyListingFacade.selectCurrencyListing(currencyListingId);
-    this.currencyListingFacade.loadCurrencyListing(currencyListingId);
+    this.currencyListingFacade.loadCurrencyListings();
   }
 
   selectCurrencyListing(currencyListing: CurrencyListing) {
@@ -51,18 +51,18 @@ export class CurrencyComponent implements OnInit {
     this.form.patchValue(currencyListing);
   }
 
-  saveCurrencyListing(currencyListing: CurrencyListing) {
-    this.currencyListingFacade.saveCurrencyListing(currencyListing);
-  }
+  // saveCurrencyListing(currencyListing: CurrencyListing) {
+  //   this.currencyListingFacade.saveCurrencyListing(currencyListing);
+  // }
 
-  deleteCurrencyListing(currencyListing: CurrencyListing) {
-    this.currencyListingFacade.deleteCurrencyListing(currencyListing);
-  }
+  // deleteCurrencyListing(currencyListing: CurrencyListing) {
+  //   this.currencyListingFacade.deleteCurrencyListing(currencyListing);
+  // }
 
-  resetCurrencyListing() {
-    this.form.reset();
-    this.selectCurrencyListing(emptyCurrencyListing)
-  }
+  // resetCurrencyListing() {
+  //   this.form.reset();
+  //   this.selectCurrencyListing(emptyCurrencyListing)
+  // }
 
   private initForm() {
     this.form = this.formBuilder.group({

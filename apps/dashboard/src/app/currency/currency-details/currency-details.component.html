@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       <h1>
-        <span *ngIf="currentCurrencyListing.base; else elseBlock">{{
+        <span *ngIf="currentCurrencyListing; else elseBlock">{{
           originalTitle
         }}</span>
         <ng-template #elseBlock>Create a Currency Conversion </ng-template>
@@ -15,16 +15,7 @@
     (ngSubmit)="save(formDirective)"
   >
     <mat-card-content>
-      <mat-form-field appearance="outline" class="full-width" floatLabel="always">
-        <mat-label>Base Currency</mat-label>
-        <input
-          matInput
-          placeholder="Base Currency"
-          formControlName="base"
-          type="text"
-          name="base"
-        />
-      </mat-form-field>
+      
 
       
 

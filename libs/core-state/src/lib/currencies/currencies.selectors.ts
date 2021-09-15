@@ -34,5 +34,5 @@ export const getSelectedCurrencyListingId = createSelector(
 export const getSelectedCurrencyListing = createSelector(
     getCurrencyListingEntities,
     getSelectedCurrencyListingId,
-    (entities, selectedId) => (selectedId && entities[selectedId]) || emptyCurrencyListing
+    (entities, selectedId) => selectedId && entities[selectedId] || emptyCurrencyListing
 );

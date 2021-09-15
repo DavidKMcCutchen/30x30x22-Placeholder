@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CurrencyListing } from "@currency-converter/api-interfaces";
+import { CurrencyListing, CurrencyRates } from "@currency-converter/api-interfaces";
 
 
 @Component({
@@ -8,7 +8,7 @@ import { CurrencyListing } from "@currency-converter/api-interfaces";
   styleUrls: ['./currency-list.component.scss']
 })
 export class CurrencyListComponent {
-  @Input() currencyListings: CurrencyListing[] | null;
+  @Input() currencyRates: CurrencyRates[] | null;
   @Input() readonly = false;
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();

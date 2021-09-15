@@ -1,17 +1,16 @@
 <div class="container">
     <div class="col-50" layout="row" layout-align="center center">
       <currency-converter-currency-list
-        [currencyListings]="allCurrencyListings$ | async"
+        [currencyRates]="allCurrencyListings$ | async"
         (selected)="selectCurrencyListing($event)"
-        (deleted)="deleteCurrencyListing($event)"
+        
         (currencyListingViewed)="viewCurrencyListing($event)"
       ></currency-converter-currency-list>
     </div>
     <div class="col-50" layout="row" layout-align="center center">
       <currency-converter-currency-details
-        [currencyListing]="selectedCurrencyListing$ | async"
-        (saved)="saveCurrencyListing($event)"
-        (cancelled)="resetCurrencyListing()"
+        [currencyRates]="selectedCurrencyListing$ | async"
+        
         [form]="form"
       ></currency-converter-currency-details>
     </div>

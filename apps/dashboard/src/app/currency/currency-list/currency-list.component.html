@@ -6,16 +6,16 @@
   </mat-card-header>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let currencyListing of currencyListings" data-test="pokemon-list-item" (click)="selected.emit(currencyListing)">
-        <h3 matLine>{{currencyListing.rates}}</h3>
+      <mat-list-item *ngFor="let currencyRates of currencyRates" data-test="currency-list-item" (click)="selected.emit(currencyRates)">
+        <h3 matLine>{{currencyRates.rates}}</h3>
         
 
-        <button mat-icon-button (click)="currencyListingViewed.emit(currencyListing.base); $event.stopImmediatePropagation()">
+        <button mat-icon-button (click)="currencyListingViewed.emit(currencyRates.rates); $event.stopImmediatePropagation()">
           <mat-icon *ngIf="!readonly">chevron_left</mat-icon>
         </button>
 
 
-        <button mat-icon-button (click)="deleted.emit(currencyListing); $event.stopImmediatePropagation()">
+        <button mat-icon-button (click)="deleted.emit(currencyRates); $event.stopImmediatePropagation()">
           <mat-icon *ngIf="!readonly">delete</mat-icon>
         </button>
       </mat-list-item>
